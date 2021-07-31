@@ -17,3 +17,15 @@ https://nextjs.org/docs/basic-features/pages#pre-rendering
 #### authentication (페이지 접근 제한 등)
 샘플 여기서 보기    
 https://github.com/vercel/next.js/tree/canary/examples/with-iron-session     
+
+#### Mobx
+
+observable을 사용하면 관찰 가능하게 만들어 줄 수 있다.    
+
+- observable : 추적 가능한 state 정의   
+- action : state를 변경하는 메소드   
+- computed : state와 캐시로    
+
+observable -> makeObservable, makeAutoObservable, observable 세 가지가 있으면 
+
+makeObservable 은 class의 this와 사용되는편 
