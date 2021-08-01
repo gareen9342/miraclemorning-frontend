@@ -27,5 +27,5 @@ observable -> makeObservable, makeAutoObservable, observable 세 가지가 있�
 
 makeObservavle 이 권장되고 있다
 
-action : state변경
-com
+action : state변경    
+computed : observable 로부터 어떠한 정보를 도출할 수 있음  
