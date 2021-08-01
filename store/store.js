@@ -1,44 +1,24 @@
-import { action, observable, computed, runInAction, makeObservable } from 'mobx'
+import { action, makeObservable } from 'mobx'
 import { enableStaticRendering } from 'mobx-react'
 import { useMemo } from 'react'
+import UserStore from './UserStore'
 
+// 참고 링크 : https://colinch4.github.io/2021-06-07/mobx/
+// 참고 링크 2 : https://www.themikelewis.com/post/nextjs-with-mobx // data fetching + 여러 Store합치고, 설계되는 것 
 enableStaticRendering(typeof window === 'undefined')
 
 let store
 
 class Store {
+  userStore = new UserStore;
+
   constructor() {
-    makeObservable(this)
+    makeObservable(this);
   }
-
-  @observable lastUpdate = 0
-  @observable light = false
-
-  @action start = () => {
-    this.timer = setInterval(() => {
-      runInAction(() => {
-        this.lastUpdate = Date.now()
-        this.light = true
-      })
-    }, 1000)
-  }
-
-  @computed get timeString() {
-    const pad = (n) => (n < 10 ? `0${n}` : n)
-    const format = (t) =>
-      `${pad(t.getUTCHours())}:${pad(t.getUTCMinutes())}:${pad(
-        t.getUTCSeconds()
-      )}`
-    return format(new Date(this.lastUpdate))
-  }
-
-  stop = () => clearInterval(this.timer)
 
   @action hydrate = (data) => {
     if (!data) return
-
-    this.lastUpdate = data.lastUpdate !== null ? data.lastUpdate : Date.now()
-    this.light = !!data.light
+    this.userStore = new UserStore(data);
   }
 }
 
@@ -46,7 +26,7 @@ function initializeStore(initialData = null) {
   const _store = store ?? new Store()
 
   // If your page has Next.js data fetching methods that use a Mobx store, it will
-  // get hydrated here, check `pages/ssg.js` and `pages/ssr.js` for more details
+  // get hydrated here
   if (initialData) {
     _store.hydrate(initialData)
   }

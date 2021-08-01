@@ -1,5 +1,5 @@
 import {Provider} from 'mobx-react';
-import { useStore } from '../store/store';
+import { useStore } from '../store/Store';
 export default function App({ Component, pageProps }) {
   const store = useStore(pageProps.initialState)
 
