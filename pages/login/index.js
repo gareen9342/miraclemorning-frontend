@@ -1,11 +1,17 @@
-import React from 'react'
+import CenteredLayout from "../../components/CenteredLayout";
+import GoogleLoginButton from "../../components/GoogleLogin";
+import { TextInput } from "../../components/UI";
+import useInput from "../hooks/useInput";
 
 const Login = () => {
-    return (
-        <div>
-            
-        </div>
-    )
-}
+  const [email, onChangeEmail, setEmail] = useInput("");
 
-export default Login
+  return (
+    <CenteredLayout>
+      <GoogleLoginButton setEmail={setEmail} />
+      <TextInput value={email} onChange={onChangeEmail} />
+    </CenteredLayout>
+  );
+};
+
+export default Login;
