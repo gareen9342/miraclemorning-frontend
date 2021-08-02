@@ -1,6 +1,7 @@
 import React from "react";
 import { useRouter } from "next/dist/client/router";
 import CenteredLayout from "../components/CenteredLayout";
+import UserService from "../services/userService";
 const Home = () => {
   const router = useRouter();
 
@@ -19,6 +20,15 @@ const Home = () => {
           className="w-full px-3 py-2 text-white bg-red-400 focus:bg-rose-600 focus:outline-none"
         >
           로그인 / 회원가입 하러 가기
+        </button>
+        <button
+          onClick={async () => {
+            await UserService.test();
+          }}
+          type="button"
+          className="w-full px-3 py-2 text-white bg-red-400 focus:bg-rose-600 focus:outline-none"
+        >
+          testtesttest
         </button>
       </CenteredLayout>
     </>

@@ -1,7 +1,7 @@
 import CenteredLayout from "../../components/CenteredLayout";
 import GoogleLoginButton from "../../components/GoogleLogin";
 import { TextInput } from "../../components/UI";
-import useInput from "../hooks/useInput";
+import useInput from "../../hooks/useInput";
 
 const Login = () => {
   const [email, onChangeEmail, setEmail] = useInput("");
